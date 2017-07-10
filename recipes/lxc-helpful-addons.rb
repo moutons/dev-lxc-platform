@@ -2,13 +2,13 @@ service 'lxc-net' do
   action [:enable, :start]
 end
 
-cookbook_file '/etc/default/lxc-net' do
-  source 'lxc-net'
+cookbook_file '/etc/lxc/dnsmasq.conf' do
+  source 'dnsmasq.conf'
   notifies :restart, 'service[lxc-net]', :immediately
 end
 
-cookbook_file '/etc/lxc/dnsmasq.conf' do
-  source 'dnsmasq.conf'
+cookbook_file '/etc/default/lxc-net' do
+  source 'lxc-net'
   notifies :restart, 'service[lxc-net]', :immediately
 end
 
